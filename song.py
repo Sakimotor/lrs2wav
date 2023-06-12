@@ -81,7 +81,7 @@ def process_audio(s, p):
     if (type(chart[s][p]) is tuple):
         sound = AudioSegment.from_file(sounds[p])
         (c, e) = chart[s][p]
-        sound = sound[:((e - s)*(125/bpm))]
+        #sound = sound[:((e - s)*(125/bpm))] not used that way actually hehe :3
     else:
         if (chart[s][p] > 199 and chart[s][p] <= 301):
             return
@@ -137,6 +137,7 @@ def render():
 
 
 def finalize():
+    print("separate files rendered, merging now")
     final = AudioSegment.silent(duration=duration)
     audios_cur = [file for file in os.listdir('tmp/')]
     for audio in audios_cur:
@@ -145,7 +146,7 @@ def finalize():
     
 
 
-
+reset()
 parse_chart()
 render()
 
