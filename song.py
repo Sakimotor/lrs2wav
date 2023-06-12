@@ -115,7 +115,7 @@ def render():
 
     for s in chart:
         if os.path.exists(f"tmp/{str(s)}.wav"):
-            print(str(s) + " existe déjà, skip")
+            print(str(s) + " exists already, skip")
             continue
         for p in chart[s]:
             process_audio(s, p)
@@ -142,6 +142,7 @@ def finalize():
     audios_cur = [file for file in os.listdir('tmp/')]
     for audio in audios_cur:
         final = final.overlay(AudioSegment.from_file("tmp/" + audio))
+        shutil.rmtree('tmp/' + audio, ignore_errors=True)
     final.export('tmp/final.wav', format="wav")
     
 
