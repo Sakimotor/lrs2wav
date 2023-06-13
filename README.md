@@ -7,7 +7,5 @@ You will need the following modules:
 
 * lxml 
 * pydub 
-* soundfile 
-* librosa
 * numpy 
 
